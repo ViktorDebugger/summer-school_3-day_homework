@@ -44,6 +44,16 @@ def create_item(item: Item):
     return {"id": item_id, "name": item.name}
 
 
+@app.get("/items/search")
+def search_items(q: str):
+    matches = {
+        item_id: name
+        for item_id, name in items_db.items()
+        if q.lower() in name.lower()
+    }
+    return {"items": matches}
+
+
 @app.get("/items/{item_id}")
 def get_item(item_id: int):
     if item_id not in items_db:
