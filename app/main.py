@@ -22,6 +22,11 @@ def health_check():
     return {"status": "ok"}
 
 
+@app.get("/ping")
+def ping():
+    return {"message": "pong"}
+
+
 @app.get("/about")
 def about():
     return {
