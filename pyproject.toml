@@ -1,0 +1,8 @@
+[project]
+name = "summer-school-3-day-homework"
+version = "0.1.0"
+description = "FastAPI homework project for Day 3 of the Git/GitHub summer school course"
+requires-python = ">=3.11"
+
+[tool.ruff]
+line-length = 100
