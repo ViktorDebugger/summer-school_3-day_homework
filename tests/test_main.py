@@ -16,6 +16,12 @@ def test_health_check():
     assert response.json() == {"status": "ok"}
 
 
+def test_ping():
+    response = client.get("/ping")
+    assert response.status_code == 200
+    assert response.json() == {"message": "pong"}
+
+
 def test_about():
     response = client.get("/about")
     assert response.status_code == 200
