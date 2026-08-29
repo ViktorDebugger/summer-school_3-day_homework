@@ -22,6 +22,3 @@ jobs:
 
       - name: Run tests
         run: pytest
-
-      - name: Simulate a failing step
-        run: exit 1
