@@ -43,6 +43,18 @@ def test_get_item_not_found():
     assert response.status_code == 404
 
 
+def test_search_items():
+    client.post("/items", json={"name": "wireless keyboard"})
+    client.post("/items", json={"name": "wireless mouse"})
+    client.post("/items", json={"name": "monitor"})
+
+    response = client.get("/items/search", params={"q": "wireless"})
+    assert response.status_code == 200
+    results = response.json()["items"]
+    assert all("wireless" in name.lower() for name in results.values())
+    assert len(results) >= 2
+
+
 def test_delete_item():
     create_response = client.post("/items", json={"name": "mouse"})
     item_id = create_response.json()["id"]
